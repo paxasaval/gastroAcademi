@@ -4,6 +4,7 @@ export interface Recipe {
     image?: string,
     difficulty?: number,
     rating?: number,
-    type?: string
+    type?: string,
+    id?: string
 }
-export interface RecipeId extends Recipe { id?: string }
+
