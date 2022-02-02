@@ -1,0 +1,44 @@
+<div class="img-bg">
+  <img class="background" src="../../../../assets/image 12.jpg" alt="">
+  <h1 class="title-header">Gastro Academi</h1>
+</div>
+<div class="main">
+  <img class="lechuga" src="../../../../assets/image 8.png" alt="">
+  <img class="tomate" src="../../../../assets/image 9.png" alt="">
+  <div class="main-container">
+    <div class="search">
+      <div class="search-input">
+        <mat-form-field appearance="outline">
+          <mat-label class="label">¿Qué deseas preparar?</mat-label>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+          <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="filters">
+        <!---->
+   <!--      <nz-tree-select style="width: 250px"
+        nzPlaceHolder="Ingredientes..."
+        [(ngModel)]="value"
+        [nzShowSearch]='true'
+        [nzMaxTagCount]="10"
+        [nzVirtualItemSize]='15'
+        [nzMaxTagPlaceholder]="omittedPlaceHolder"
+        [nzNodes]="nodes" [nzDefaultExpandAll]="true"
+        [nzAllowClear]="false"
+        [nzMultiple]="true"
+        (ngModelChange)="onChange($event)">
+      </nz-tree-select>
+
+        <ng-template #omittedPlaceHolder let-omittedValues>and {{ omittedValues.length }} more...</ng-template>
+ -->
+        <!---->
+
+      </div>
+    </div>
+    <div class="grid-recipe">
+      <div *ngFor="let card of cards">
+        <app-recipe-card [card]='card'></app-recipe-card>
+      </div>
+    </div>
+  </div>
+</div>

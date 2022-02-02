@@ -13,7 +13,7 @@ export class GetRecipeUseCases {
     getRecipeById(id: string): Observable <Recipe> {
         return this._recipeGetaWay.getRecipeByID(id);
     }
-    getAllRecipe () : Observable <Array<Recipe>> {
+    getAllRecipe () : Observable <Recipe[]> {
         return this._recipeGetaWay.getAllRecipes();
     }
 }
