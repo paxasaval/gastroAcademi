@@ -15,7 +15,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
-;
+import { CountdownModule} from 'ngx-countdown';
 import {MatSelectModule} from '@angular/material/select';
 import { NzTreeSelectModule } from 'ng-zorro-antd/tree-select';
 import { NzSelectModule } from 'ng-zorro-antd/select';
@@ -44,7 +44,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     NzTreeSelectModule,
     NzSelectModule,
     NzTagModule,
-    MatDialogModule
+    MatDialogModule,
+    CountdownModule
   ],
   exports: [
     MatButtonModule,
@@ -66,7 +67,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     NzTreeSelectModule,
     NzSelectModule,
     NzTagModule,
-    MatDialogModule
+    MatDialogModule,
+    CountdownModule
   ]
 })
 export class MaterialModule { }

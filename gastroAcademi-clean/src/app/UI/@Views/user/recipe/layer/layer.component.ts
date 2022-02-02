@@ -1,8 +1,13 @@
+import { GetInstructionsUseCase } from './../../../../../domain/usecase/get-instructions-use-case';
+import { GetTimesUseCase } from './../../../../../domain/usecase/get-times-use-case';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { Recipe } from 'src/app/domain/models/recipe/recipe';
+import { GetRecipeUseCases } from 'src/app/domain/usecase/get-recipe-use-case';
+import { GetIngredientsUseCase } from 'src/app/domain/usecase/get-ingredients-use-case';
+import { GetIngRecipeUseCase } from 'src/app/domain/usecase/get-ing-recipe-use-case';
 
 export interface TimeList{
   name?: string;
@@ -31,7 +36,7 @@ export interface RecipeInfo{
 @Component({
   selector: 'app-layer',
   templateUrl: './layer.component.html',
-  styleUrls: ['./layer.component.css']
+  styleUrls: ['./layer.component.sass']
 })
 export class LayerComponent implements OnInit {
   recipeId = ""
@@ -63,23 +68,23 @@ export class LayerComponent implements OnInit {
   }
 
   constructor(
-    //private recipeService: RecipeService,
-    //private timesService: TimesService,
-    //private ingredientsService: IngredientsService,
-    //private instructionsService: InstructionsService,
+    private getRecipe: GetRecipeUseCases,
+    private getTimes: GetTimesUseCase,
+    private getIngRecipe: GetIngRecipeUseCase,
+    private getInstruction: GetInstructionsUseCase,
     private router: ActivatedRoute
   ) { }
 
   fetchRecipe(){
-    /* this.recipeService.getRecipeById(this.recipeId).subscribe(
+     this.getRecipe.getRecipeById(this.recipeId).subscribe(
       result => {
         this.recipe=result
       }
-    ) */
+    )
   }
 
   fetchIngredientsRecipe(){
-    /* this.ingredientsService.getIngredientsByRecipe(this.recipeId).subscribe(
+    this.getIngRecipe.getIngredientsByRecipe(this.recipeId).subscribe(
       result => {
         this.ingredients = []
         result.forEach(x => {
@@ -98,11 +103,11 @@ export class LayerComponent implements OnInit {
       ()=>{
         console.log('completado')
       }
-    ) */
+    )
   }
 
   fetchInstructionsRecipe(){
-    /* this.instructionsService.getInstructionByRecipe(this.recipeId).subscribe(
+    this.getInstruction.getInstructionsByRecipe(this.recipeId).subscribe(
       result => {
         this.instructions = []
         result.forEach(x => {
@@ -118,11 +123,11 @@ export class LayerComponent implements OnInit {
         this.dataSource1.data=this.instructions
 
       }
-    ) */
+    )
   }
 
   fetchRTimesRecipe(){
-   /*  this.timesService.getTimesByRecipe(this.recipeId).subscribe(
+   this.getTimes.getTimesByRecipe(this.recipeId).subscribe(
       result => {
         this.times = []
         result.forEach(x => {
@@ -133,7 +138,7 @@ export class LayerComponent implements OnInit {
           this.times.push(auxTimes)
         })
       }
-    ) */
+    )
   }
 
   startTimer(){
