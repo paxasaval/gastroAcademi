@@ -13,7 +13,7 @@ export class RecipeCardComponent implements OnInit {
   //console.log()
 
   openRecipe(){
-    this.router.navigate([`Buscar-receta/Receta/${this.card.path}`])
+    this.router.navigate([`recipe/id/${this.card.path}`])
   }
 
   ngOnInit(): void {

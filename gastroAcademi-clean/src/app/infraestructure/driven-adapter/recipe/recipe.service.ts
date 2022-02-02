@@ -18,7 +18,13 @@ export class RecipeService extends RecipeGetaway {
   ) {
     super();
     this.recipeCollection = afs.collection<Recipe>('recipes');
-    this.recipes = this.recipeCollection.valueChanges();
+    this.recipes = this.recipeCollection.snapshotChanges().pipe(
+      map(actions=>actions.map(a=>{
+        const data = a.payload.doc.data() as Recipe
+        data.id = a.payload.doc.id
+        return data
+      }))
+    );
    }
    getAllRecipes(): Observable<Recipe[]> {
        return this.recipes
