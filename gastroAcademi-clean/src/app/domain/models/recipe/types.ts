@@ -1,4 +1,4 @@
 export interface Types {
-    name?: string
+    name?: string,
+    id?: string
 }
-export interface TypesId extends Types { id: string }
