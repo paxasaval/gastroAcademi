@@ -1,3 +1,5 @@
+import { TimesService } from './infraestructure/driven-adapter/recipe/times.service';
+import { TimesGetaway } from 'src/app/domain/models/recipe/gateway/times-getaway';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -49,7 +51,8 @@ import { CategoryService } from './infraestructure/driven-adapter/recipe/categor
     {provide: TechniquesGetaway, useClass: TechniquesService},
     {provide: TechRecipeGetaway, useClass: TechniquesRecipeService},
     {provide: TypesGetaway, useClass: TypesService},
-    {provide: CategoryGetaway, useClass: CategoryService}
+    {provide: CategoryGetaway, useClass: CategoryService},
+    {provide: TimesGetaway, useClass: TimesService}
   ],
   bootstrap: [AppComponent]
 })

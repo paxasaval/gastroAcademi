@@ -9,15 +9,15 @@ import { Ingredients } from "../models/recipe/ingredients";
 
 export class GetIngredientsUseCase {
     constructor(private _ingredientsGetaway: IngredientsGetaway) { }
-    getIngredientsById(id: string): Observable<Ingredients> {
+    getIngredientsById(id: string): Observable<Ingredients[]> {
         return this._ingredientsGetaway.getIngredientsByID(id);
     }
 
-    getAllIngredients(): Observable<Array<Ingredients>> {
+    getAllIngredients(): Observable<Ingredients[]> {
         return this._ingredientsGetaway.getAllIngredients();
     }
 
-    getIngredientByCategory(category: string) {
+    getIngredientByCategory(category: string):Observable<Ingredients[]>   {
         return this._ingredientsGetaway.getIngredientsByCategory(category);
     }
 }

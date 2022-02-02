@@ -9,19 +9,19 @@ import { IngredientsRecipe } from "../models/recipe/ingredients-recipe";
 
 export class GetIngRecipeUseCase {
     constructor(private _ingRecipeGetaway: IngRecipeGetaway) { }
-    getIngredientsByRecipe(recipe: string) {
+    getIngredientsByRecipe(recipe: string): Observable<IngredientsRecipe[]> {
         return this._ingRecipeGetaway.getIngredientsByRecipe(recipe);
     }
 
-    getIngredientsByName(name: string) {
+    getIngredientsByName(name: string): Observable<IngredientsRecipe[]> {
         return this._ingRecipeGetaway.getIngredientByName(name);
     }
 
-    getIngredientsByIngredient(ingredient: string) {
+    getIngredientsByIngredient(ingredient: string): Observable<IngredientsRecipe[]>  {
         return this._ingRecipeGetaway.getIngredientsByIngredient(ingredient);
     }
 
-    getAllIngredients(): Observable<Array<IngredientsRecipe>> {
+    getAllIngredients(): Observable<IngredientsRecipe[]> {
         return this._ingRecipeGetaway.getAllIngredients();
     }
 }

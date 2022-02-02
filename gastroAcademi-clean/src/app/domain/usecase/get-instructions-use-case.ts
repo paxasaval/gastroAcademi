@@ -9,11 +9,11 @@ import { Instructions } from "../models/recipe/instructions";
 
 export class GetInstructionsUseCase{
     constructor(private _instructionsGetaway: InstructionsGetaway){}
-    getInstructionsByRecipe(recipe:string): Observable<Instructions>{
+    getInstructionsByRecipe(recipe:string): Observable<Instructions[]>{
         return this._instructionsGetaway.getInstructionsByRecipe(recipe);
     }
 
-    getAllInstructions(): Observable<Array<Instructions>>{
+    getAllInstructions(): Observable<Instructions[]>{
         return this._instructionsGetaway.getAllInstructions();
     }
 }

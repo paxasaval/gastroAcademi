@@ -1,3 +1,5 @@
+import { GetCategoryUseCase } from './../../../../../domain/usecase/get-category-use-case';
+import { GetIngredientsUseCase } from './../../../../../domain/usecase/get-ingredients-use-case';
 //import { CategoryService } from 'src/app/service/recipe/category.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
@@ -10,6 +12,7 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { Ingredients } from 'src/app/domain/models/recipe/ingredients';
 import { NzTreeNodeOptions } from 'ng-zorro-antd/tree';
 import { GetRecipeUseCases } from 'src/app/domain/usecase/get-recipe-use-case';
+import { GetIngRecipeUseCase } from 'src/app/domain/usecase/get-ing-recipe-use-case';
 //import { IngredientService } from 'src/app/service/recipe/ingredient.service';
 
 export interface Ingredientes {
@@ -57,29 +60,28 @@ export class LayerComponent implements OnInit {
   constructor(
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
-    //private recipeService: RecipeService,
-    private getRecipe: GetRecipeUseCases
-    //private ingredientsService: IngredientsService,
-    //categoryService: CategoryService,
-    //private ingredientService: IngredientService,
+    private getRecipe: GetRecipeUseCases,
+    private getIngredient: GetIngredientsUseCase,
+    private getCategory: GetCategoryUseCase,
+    private getIngRecipe: GetIngRecipeUseCase,
   ) {
     iconRegistry.addSvgIcon('ingredientes', sanitizer.bypassSecurityTrustResourceUrl('../../../../assets/image 2.svg'))
     iconRegistry.addSvgIcon('coccion', sanitizer.bypassSecurityTrustResourceUrl('../../../../assets/image 3.svg'))
     iconRegistry.addSvgIcon('coservacion', sanitizer.bypassSecurityTrustResourceUrl('../../../../assets/image 5.svg'))
     iconRegistry.addSvgIcon('tecnicas', sanitizer.bypassSecurityTrustResourceUrl('../../../../assets/image 6.svg'))
   }
-/*
+
   async fetchNodes() {
     this.nodes = []
-    this.categoryService.getAllCategorys().subscribe(
+    this.getCategory.getAllCategorys().subscribe(
       async categorys => {
         for (const category of categorys) {
           var auxNode: NzTreeNodeOptions = {
             title: category.name!,
-            key: category.id
+            key: category.id!
           }
           const ingredients = await new Promise<any[]>((resolve, reject) => {
-            this.ingredientService.getIngredientsByCategory(category.id).subscribe(
+            this.getIngredient.getIngredientByCategory(category.id!).subscribe(
               ingredient => {
                 var auxSubNodes: NzTreeNodeOptions[] = []
                 ingredient.forEach(x => {
@@ -108,7 +110,7 @@ export class LayerComponent implements OnInit {
       this.cards = []
       console.log(filterRecipe)
       const auxRecipe = await new Promise<any[]>((resolve, reject) => {
-        this.ingredientsService.getIngredientsByIngredient(ingredient).subscribe(
+        this.getIngRecipe.getIngredientsByIngredient(ingredient).subscribe(
           result => {
             result.forEach(i => {
               const predicade = (element: any) => element.path === i.recipe
@@ -125,7 +127,7 @@ export class LayerComponent implements OnInit {
     }
 
   }
-*/
+
   fetchRecipes(){
 
     this.getRecipe.getAllRecipe().subscribe(
@@ -146,7 +148,7 @@ export class LayerComponent implements OnInit {
 
   onChange($event: string[]): void {
     if ($event.length > 0) {
-      //this.fetchCards($event)
+      this.fetchCards($event)
     } else {
       this.cards = this.cards1!
     }
@@ -159,7 +161,7 @@ export class LayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchRecipes()
-    //this.fetchNodes()
+    this.fetchNodes()
 
     this.filteredOptions_1 = this.myControl_1.valueChanges.pipe(
       startWith(''),

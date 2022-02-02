@@ -9,15 +9,15 @@ import { Times } from "../models/recipe/times";
 
 export class GetTimesUseCase{
     constructor(private _timesGetaway: TimesGetaway){}
-    getTimesByName(name: string):Observable<Times>{
+    getTimesByName(name: string):Observable<Times[]>{
         return this._timesGetaway.getTimesByName(name);
     }
 
-    getTimesByRecipe(recipe: string): Observable<Times>{
+    getTimesByRecipe(recipe: string): Observable<Times[]>{
         return this._timesGetaway.getTimesByRecipe(recipe)
     }
 
-    getAllTimes(): Observable <Array<Times>>{
+    getAllTimes(): Observable <Times[]>{
         return this._timesGetaway.getAllTimes();
     }
 }
