@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { TimesService } from './infraestructure/driven-adapter/recipe/times.service';
 import { TimesGetaway } from 'src/app/domain/models/recipe/gateway/times-getaway';
 import { NgModule } from '@angular/core';
@@ -28,6 +29,7 @@ import { TypesGetaway } from './domain/models/recipe/gateway/types-getaway';
 import { TypesService } from './infraestructure/driven-adapter/recipe/types.service';
 import { CategoryGetaway } from './domain/models/recipe/gateway/categorys-getaway';
 import { CategoryService } from './infraestructure/driven-adapter/recipe/category.service';
+import { RecipemicroNodeService } from './infraestructure/driven-adapter/recipe/recipemicroNode.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { CategoryService } from './infraestructure/driven-adapter/recipe/categor
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
@@ -44,7 +47,7 @@ import { CategoryService } from './infraestructure/driven-adapter/recipe/categor
     provideStorage(() => getStorage())
   ],
   providers: [
-    {provide: RecipeGetaway, useClass: RecipeService},
+    {provide: RecipeGetaway, useClass: RecipemicroNodeService},
     {provide: IngredientsGetaway, useClass: IngredientService},
     {provide: IngRecipeGetaway, useClass: IngRecipeService},
     {provide: InstructionsGetaway, useClass: InstructionsService},
