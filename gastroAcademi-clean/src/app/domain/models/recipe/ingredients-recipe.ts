@@ -6,5 +6,5 @@ export interface IngredientsRecipe {
     recipe?: string,
     measure?: string,
     quantity?: number,
+    id?: string
 }
-export interface IngredientsRecipeId extends IngredientsRecipe { id: string }
