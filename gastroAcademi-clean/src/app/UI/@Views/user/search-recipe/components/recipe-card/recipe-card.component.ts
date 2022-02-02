@@ -1,0 +1,21 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+@Component({
+  selector: 'app-recipe-card',
+  templateUrl: './recipe-card.component.html',
+  styleUrls: ['./recipe-card.component.sass']
+})
+export class RecipeCardComponent implements OnInit {
+  @Input() card:any
+  constructor(private router:Router) { }
+
+  //fetch ingredients, fetch intruction,  fetchTimes
+  //console.log()
+
+  openRecipe(){
+    this.router.navigate([`recipe/id/${this.card.path}`])
+  }
+
+  ngOnInit(): void {
+  }
+}
