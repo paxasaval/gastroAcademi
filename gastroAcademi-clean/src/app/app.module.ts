@@ -47,7 +47,7 @@ import { RecipemicroNodeService } from './infraestructure/driven-adapter/recipe/
     provideStorage(() => getStorage())
   ],
   providers: [
-    {provide: RecipeGetaway, useClass: RecipemicroNodeService},
+    {provide: RecipeGetaway, useClass: RecipeService},
     {provide: IngredientsGetaway, useClass: IngredientService},
     {provide: IngRecipeGetaway, useClass: IngRecipeService},
     {provide: InstructionsGetaway, useClass: InstructionsService},
